@@ -20,15 +20,17 @@ function App()
     let tempCurrentPrice = currentPrice;
     let totalInitialPrice = parseInt(tempQuantityOfStocks) * parseInt(tempInitialPrice);
     let totalCurrentPrice = parseInt(tempQuantityOfStocks) * parseInt(tempCurrentPrice);
+    console.log(totalInitialPrice);
+    // console.log( < 1200);
     let percentage;
-    if(tempInitialPrice < tempCurrentPrice)
+    if(totalInitialPrice < totalCurrentPrice)
     {
       let profit = totalCurrentPrice - totalInitialPrice;
       percentage = (profit / totalInitialPrice) * 100;
       setOutputMessage("Hey, the profit is " + profit + " Rs and Profit% is " + parseInt(percentage) + "%");
       setClassName("correct");
     }
-    else if(tempInitialPrice > tempCurrentPrice)
+    else if(totalInitialPrice > totalCurrentPrice)
     {
       let loss = totalInitialPrice - totalCurrentPrice;
       percentage = (loss / totalInitialPrice) * 100;
@@ -47,13 +49,13 @@ function App()
 
         <form onSubmit = {(e) => handleSubmit(e)}>
           <label for = "intial-price" className = "label">Initial Price: </label>
-          <input type = "number" className = "input" onChange = {(e) => setIntialPrice(e.target.value)} min = "1"></input>
+          <input type = "number" className = "input" onChange = {(e) => setIntialPrice(e.target.value)} min = "1" required></input>
 
           <label for = "quantity-of-stocks" className = "label">Quantity of Stocks: </label>
-          <input type = "number" className = "input" onChange = {(e) => setQuantityOfStocks(e.target.value)} min = "1"></input>
+          <input type = "number" className = "input" onChange = {(e) => setQuantityOfStocks(e.target.value)} min = "1" required></input>
 
           <label for = "current-price" className = "label">Current Price: </label>
-          <input type = "number" className = "input" onChange = {(e) => setCurrentPrice(e.target.value)} min = "0"></input>
+          <input type = "number" className = "input" onChange = {(e) => setCurrentPrice(e.target.value)} min = "0" required></input>
 
           <button type = "submit" className = "button">Tell Me!</button>
         </form>
