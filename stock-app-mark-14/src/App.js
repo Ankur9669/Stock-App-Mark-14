@@ -23,16 +23,16 @@ function App()
     let percentage;
     if(tempInitialPrice < tempCurrentPrice)
     {
-      percentage = (totalCurrentPrice / totalInitialPrice) * 100;
       let profit = totalCurrentPrice - totalInitialPrice;
-      setOutputMessage("Hey, the profit is " + profit + " and % is " + parseInt(percentage) + "%");
+      percentage = (profit / totalInitialPrice) * 100;
+      setOutputMessage("Hey, the profit is " + profit + " Rs and Profit% is " + parseInt(percentage) + "%");
       setClassName("correct");
     }
     else if(tempInitialPrice > tempCurrentPrice)
     {
-      percentage = (totalInitialPrice / totalCurrentPrice) * 100;
       let loss = totalInitialPrice - totalCurrentPrice;
-      setOutputMessage("Oops u had a loss of " + loss + " and % is " + parseInt(percentage) + "%");
+      percentage = (loss / totalInitialPrice) * 100;
+      setOutputMessage("Oops u had a loss of " + loss + " Rs and loss% is " + parseInt(percentage) + "%");
       setClassName("incorrect");
     }
     else{
@@ -47,13 +47,13 @@ function App()
 
         <form onSubmit = {(e) => handleSubmit(e)}>
           <label for = "intial-price" className = "label">Initial Price: </label>
-          <input type = "number" className = "input" onChange = {(e) => setIntialPrice(e.target.value)}></input>
+          <input type = "number" className = "input" onChange = {(e) => setIntialPrice(e.target.value)} min = "1"></input>
 
           <label for = "quantity-of-stocks" className = "label">Quantity of Stocks: </label>
-          <input type = "number" className = "input" onChange = {(e) => setQuantityOfStocks(e.target.value)}></input>
+          <input type = "number" className = "input" onChange = {(e) => setQuantityOfStocks(e.target.value)} min = "1"></input>
 
           <label for = "current-price" className = "label">Current Price: </label>
-          <input type = "number" className = "input" onChange = {(e) => setCurrentPrice(e.target.value)}></input>
+          <input type = "number" className = "input" onChange = {(e) => setCurrentPrice(e.target.value)} min = "1"></input>
 
           <button type = "submit" className = "button">Tell Me!</button>
         </form>
