@@ -53,7 +53,7 @@ function App()
           <input type = "number" className = "input" onChange = {(e) => setQuantityOfStocks(e.target.value)} min = "1"></input>
 
           <label for = "current-price" className = "label">Current Price: </label>
-          <input type = "number" className = "input" onChange = {(e) => setCurrentPrice(e.target.value)} min = "1"></input>
+          <input type = "number" className = "input" onChange = {(e) => setCurrentPrice(e.target.value)} min = "0"></input>
 
           <button type = "submit" className = "button">Tell Me!</button>
         </form>
